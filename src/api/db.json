@@ -1,0 +1,28 @@
+{
+    "applications": [
+        {
+            "id": "0",
+            "title": "",
+            "subtitle": "",
+            "department": "",
+            "openDate": "",
+            "closeDate": "",
+            "sex": "",
+            "education": "",
+            "salaryIsTaxed": "",
+            "salaryAmountFrom": "",
+            "salaryAmountTo": "",
+            "region": "",
+            "adress": "",
+            "subway": "",
+            "experience": "",
+            "schedule": "",
+            "workType": "",
+            "responsibilities": "",
+            "wishes": "",
+            "advantages": "",
+            "offer": "",
+            "createDate": ""
+        }
+    ]
+}
