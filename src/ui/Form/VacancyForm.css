@@ -1,0 +1,86 @@
+.vacancy-form {
+  width: 100%;
+  margin: 56px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: #4f4f55;
+}
+
+.vacancy-form__wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 60px;
+}
+
+.vacancy-form__wrapper--textareas .vacancy-form__inner {
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+
+.vacancy-form__inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.vacancy-form__bottom {
+  display: flex;
+  width: 100%;
+  gap: 60px;
+}
+
+.vacancy-form__radios {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.vacancy-form__radios--horizontal {
+  flex-direction: row;
+  margin: 0 0 16px;
+  gap: 20px;
+  align-items: center;
+}
+
+.vacancy-form__radio-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 8px;
+}
+
+.vacancy-form__radio-title span {
+  color: #bf0003;
+}
+
+.vacancy-form__salary-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.vacancy-form__salary-value {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.vacancy-form__controls {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.vacancy-form__submit {
+}
+
+.vacancy-form__discard {
+}

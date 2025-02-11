@@ -1,6 +1,6 @@
 import Application from "../interfaces";
 
-const API_URL = "http://localhost:5000";
+export const API_URL = "http://localhost:5000";
 
 export async function getApplications(): Promise<Application[]> {
   const response = await fetch(`${API_URL}/applications`);
@@ -14,8 +14,10 @@ export async function getApplications(): Promise<Application[]> {
   return response.json();
 }
 
-export async function getApplication(applicationId: string) {
-  const response = await fetch(`${API_URL}/applicatons/${applicationId}`);
+export async function getApplication(
+  applicationId: string
+): Promise<Application> {
+  const response = await fetch(`${API_URL}/applications/${applicationId}`);
 
   if (!response.ok) {
     throw new Error(
@@ -26,20 +28,14 @@ export async function getApplication(applicationId: string) {
   return response.json();
 }
 
-export function createApplication(application: Application) {
-  return fetch(`${API_URL}/applicatons`, {
-    method: "POST",
+export async function updateApplication(
+  updatedApplication: Application
+): Promise<void> {
+  await fetch(`${API_URL}/applications/${updatedApplication.id}`, {
+    method: "PATCH",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(application),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(
-          `Ошибка отправки. Статус: ${response.status} Попробуйте еще раз через несколько минут :)`
-        );
-      }
-    })
-    .catch((error) => console.error(error));
+    body: JSON.stringify(updatedApplication),
+  });
 }

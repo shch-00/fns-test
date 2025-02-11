@@ -1,0 +1,118 @@
+.card {
+  width: 100%;
+  display: flex;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 16px 28px;
+  justify-content: space-between;
+}
+
+.card__left {
+  display: flex;
+  flex-direction: column;
+}
+
+.card__date {
+  font-weight: 400;
+  font-size: 14px;
+  color: #4f4f55;
+  margin: 0 0 48px;
+}
+
+.card__title {
+  font-weight: 700;
+  font-size: 25px;
+  color: #4f4f55;
+  margin: 0 0 12px;
+}
+
+.card__location {
+  font-family: PFDinTextCondPro, Infer, Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4f4f55;
+}
+
+.card__right {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: space-between;
+}
+
+.card__link {
+  width: 20px;
+  height: 20px;
+}
+
+.card__right-inner {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.card__salary {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.salary {
+  display: flex;
+  align-items: end;
+  color: #4f4f55;
+  font-weight: 400;
+  font-style: 14px;
+  font-family: PFDinTextCondPro, Infer, Helvetica, Arial, sans-serif;
+}
+
+.salary--highlight {
+  font-weight: 700;
+  font-size: 20px;
+  color: #4c73e3;
+  font-family: PFDinTextCondProBold, Infer, Helvetica, Arial, sans-serif;
+}
+
+.card__experience {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.experience {
+  display: flex;
+  align-items: end;
+  color: #4f4f55;
+  font-weight: 400;
+  font-size: 14px;
+  font-family: PFDinTextCondPro, Infer, Helvetica, Arial, sans-serif;
+}
+
+.experience--highlight {
+  font-weight: 700;
+  font-size: 16px;
+  color: #4c73e3;
+  font-family: PFDinTextCondProBold, Infer, Helvetica, Arial, sans-serif;
+}
+
+.card__subway {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.subway {
+    display: flex;
+  align-items: end;
+  color: #4f4f55;
+  font-weight: 400;
+  font-size: 16px;
+  font-family: PFDinTextCondPro, Infer, Helvetica, Arial, sans-serif;
+}
+
+.subway-icon {
+    width: 20px;
+    height: 20px;
+}
+
+

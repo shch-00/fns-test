@@ -1,16 +1,17 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { getRelevantExperience } from "../../utils/getRelevantExperience";
-import Application from '../../interfaces'
+import Application from "../../interfaces";
+import "./Vacancy.css";
 
 type TVacancyItemProps = {
-  vacancy: Application
+  vacancy: Application;
 };
 
-export const VacancyItem: FC<TVacancyItemProps> = ({
-  vacancy
-}) => {
-  const formattedDate = new Date(vacancy.date).toLocaleDateString("ru-RU");
+export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
+  const formattedDate = new Date(vacancy.currentDate).toLocaleDateString(
+    "ru-RU"
+  );
   const location = `${vacancy.region}, ${vacancy.adress}`;
 
   let salaryType;
@@ -23,67 +24,83 @@ export const VacancyItem: FC<TVacancyItemProps> = ({
   }
 
   const salary =
-    vacancy.salaryAmountTo !== undefined && vacancy.salaryAmountFrom !== undefined ? (
-      vacancy.salaryAmountTo > vacancy.salaryAmountFrom ? (
-        <span className="card__salary">
-          <span>От {vacancy.salaryAmountTo}</span> {salaryType}
-        </span>
+    vacancy.salaryAmountFrom !== undefined ? (
+      vacancy.salaryAmountTo !== undefined ? (
+        <div className="card__salary">
+          <span className="salary salary--highlight">
+            От {vacancy.salaryAmountFrom}
+          </span>{" "}
+          <span className="salary">{salaryType}</span>
+        </div>
       ) : (
-        <span className="card__salary">
-          <span>{vacancy.salaryAmountTo}</span> {salaryType}
-        </span>
+        <div className="card__salary">
+          <span className="salary salary--highlight">
+            {vacancy.salaryAmountFrom}
+          </span>{" "}
+          <span className="salary">{salaryType}</span>
+        </div>
       )
     ) : (
-      <span className="card__salary">Зарплата не указана</span>
+      <div className="card__salary">
+        <span className="salary">Зарплата не указана</span>
+      </div>
     );
 
-  const relevantExperience = vacancy.experience && getRelevantExperience(vacancy.experience);
+  const relevantExperience =
+    vacancy.experience && getRelevantExperience(vacancy.experience);
 
   let experienceString;
 
   if (relevantExperience === "" || relevantExperience < 1) {
     experienceString = (
-      <span className="card__experience">Опыт не требуется</span>
+      <div className="card__experience">
+        <span className="experience">Опыт не требуется</span>
+      </div>
     );
   } else if (relevantExperience < 3) {
     experienceString = (
-      <span className="card__experience">
-        Требуемый опыт: <span>от 1 до 3 лет</span>
-      </span>
+      <div className="card__experience">
+        <span className="experience">Требуемый опыт:</span>{" "}
+        <span className="experience experience--highlight">от 1 до 3 лет</span>
+      </div>
     );
   } else if (relevantExperience < 6) {
     experienceString = (
-      <span className="card__experience">
-        Требуемый опыт: <span>от 3 до 6 лет</span>
-      </span>
+      <div className="card__experience">
+        <span className="experience">Требуемый опыт:</span>{" "}
+        <span className="experience experience--highlight">от 3 до 6 лет</span>
+      </div>
     );
   } else {
     experienceString = (
-      <span className="card__experience">
-        Требуемый опыт: <span>от 6 лет и выше</span>
-      </span>
+      <div className="card__experience">
+        <span className="experience">Требуемый опыт:</span>{" "}
+        <span className="experience experience--highlight">
+          от 6 лет и выше
+        </span>
+      </div>
     );
   }
 
   return (
     <div className="card">
-      <div className="card__right">
+      <div className="card__left">
         <span className="card__date">Дата публикации: {formattedDate}</span>
         <h3 className="card__title">{vacancy.title}</h3>
         <div className="card__location">
-          <svg width={20} height={20} /> {location}
+          <svg width={"20"} height={"20"} /> {location}
         </div>
       </div>
-      <div className="card__left">
-        <Link to={`applications/${vacancy.id}`}>
-          <svg />
+      <div className="card__right">
+        <Link to={`/applications/${vacancy.id}`} className="card__link">
+          ↗️
         </Link>
-        <div className="card__left-inner">
+        <div className="card__right-inner">
           {salary}
           {experienceString}
           <div className="card__subway">
-            <svg />
-            <span>{vacancy.subway}</span>
+            <svg className="subway-icon" />
+            <span className="subway">{vacancy.subway}</span>
           </div>
         </div>
       </div>
