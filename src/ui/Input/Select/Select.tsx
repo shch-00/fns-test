@@ -133,7 +133,7 @@ export const SelectField: FC<ISelectFieldProps> = ({
       />
       <ReactSVG
         className={selectIconClassName}
-        src="src/assets/icons/switch.svg"
+        src="assets/icons/switch.svg"
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </div>

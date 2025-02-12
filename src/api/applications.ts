@@ -1,6 +1,6 @@
 import Application from "../interfaces";
 
-export const API_URL = "https://fns-test.onrender.com/data";
+export const API_URL = "https://fns-test.onrender.com";
 
 export async function getApplications(): Promise<Application[]> {
   const response = await fetch(`${API_URL}/applications`);
