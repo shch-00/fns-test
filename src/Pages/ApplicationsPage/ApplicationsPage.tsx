@@ -6,7 +6,11 @@ export function ApplicationsPage() {
   const { data, isLoading, isError } = useApplications();
 
   if (isLoading) {
-    return <Loader />;
+    return (
+      <div className="loading">
+        <Loader />
+      </div>
+    );
   }
 
   if (isError) {

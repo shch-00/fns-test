@@ -16,7 +16,7 @@
   font-weight: 400;
   font-size: 14px;
   color: #4f4f55;
-  margin: 0 0 48px;
+  margin: 0 0 30px;
 }
 
 .card__title {
@@ -31,6 +31,9 @@
   font-weight: 400;
   font-size: 16px;
   color: #4f4f55;
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 .card__right {

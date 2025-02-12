@@ -1,6 +1,6 @@
 import { Formik, Form } from "formik";
 import { Input } from "../Input";
-import { FC } from "react";
+import { FC, useState } from "react";
 import { Button } from "../Button";
 import { IFormProps, validationSchema } from "./types";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,9 @@ export const VacancyForm: FC<IFormProps> = ({
 }) => {
   const navigate = useNavigate();
   const discardChanges = () => navigate("/applications");
+
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <Formik
@@ -52,6 +55,10 @@ export const VacancyForm: FC<IFormProps> = ({
                 isRequired={true}
                 type="date"
                 className="date"
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
               />
               <Input
                 id="closeDate"
@@ -60,6 +67,10 @@ export const VacancyForm: FC<IFormProps> = ({
                 isRequired={true}
                 type="date"
                 className="date"
+                startDate={startDate}
+                endDate={endDate}
+                setStartDate={setStartDate}
+                setEndDate={setEndDate}
               />
               <div className="vacancy-form__bottom">
                 <div className="vacancy-form__radios">

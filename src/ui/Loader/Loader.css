@@ -38,9 +38,9 @@
 }
 
 .loader[data-color='blue'] > .loader__segment {
-  background-color: var(--color__primary);
+  background-color: #4c73e3;
 }
 
 .loader[data-color='white'] > .loader__segment {
-  background-color: var(--color__background);
+  background-color: #4c73e3;
 }

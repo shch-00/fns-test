@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { getRelevantExperience } from "../../utils/getRelevantExperience";
 import Application from "../../interfaces";
 import "./Vacancy.css";
+import { ReactSVG } from "react-svg";
 
 type TVacancyItemProps = {
   vacancy: Application;
@@ -82,26 +83,40 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
     );
   }
 
+  const subway =
+    vacancy.subway !== "" ? (
+      <div className="card__subway">
+        <ReactSVG
+          className="card__metro-icon"
+          src="src/assets/icons/metro.svg"
+        />
+        <span className="subway">{vacancy.subway}</span>
+      </div>
+    ) : (
+      <></>
+    );
+
   return (
     <div className="card">
       <div className="card__left">
         <span className="card__date">Дата публикации: {formattedDate}</span>
         <h3 className="card__title">{vacancy.title}</h3>
         <div className="card__location">
-          <svg width={"20"} height={"20"} /> {location}
+          <ReactSVG className="card__map-icon" src="src/assets/icons/map.svg" />{" "}
+          {location}
         </div>
       </div>
       <div className="card__right">
         <Link to={`/applications/${vacancy.id}`} className="card__link">
-          ↗️
+          <ReactSVG
+            className="card__edit-icon"
+            src="src/assets/icons/edit.svg"
+          />
         </Link>
         <div className="card__right-inner">
           {salary}
           {experienceString}
-          <div className="card__subway">
-            <svg className="subway-icon" />
-            <span className="subway">{vacancy.subway}</span>
-          </div>
+          {subway}
         </div>
       </div>
     </div>

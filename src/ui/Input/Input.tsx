@@ -3,7 +3,8 @@ import { FC, useState } from "react";
 import { DatePickerField } from "./DatePicker/DatePicker";
 import { SelectField } from "./Select/Select";
 import { Textarea } from "./Textarea/Textarea";
-import './Input.css'
+import "./Input.css";
+import { ReactSVG } from "react-svg";
 
 interface IInputProps {
   id: string;
@@ -17,6 +18,10 @@ interface IInputProps {
   radioAmount?: number;
   options?: { value: string; label: string }[];
   value?: string;
+  startDate?: Date;
+  setStartDate?: (date: Date) => void;
+  endDate?: Date;
+  setEndDate?: (date: Date) => void;
 }
 
 export const Input: FC<IInputProps> = ({
@@ -30,6 +35,10 @@ export const Input: FC<IInputProps> = ({
   options = [],
   placeholder = "",
   value = "",
+  startDate,
+  setStartDate,
+  endDate,
+  setEndDate,
   ...props
 }) => {
   const [field, meta] = useField(name);
@@ -41,10 +50,10 @@ export const Input: FC<IInputProps> = ({
       <div
         className={`custom-input ${
           className
-            ? meta.error
+            ? meta.touched && meta.error
               ? `custom-input--${className} custom-input--${className}-error`
               : `custom-input--${className}`
-            : meta.error
+            : meta.touched && meta.error
             ? "custom-input--error"
             : ""
         } `}
@@ -58,7 +67,13 @@ export const Input: FC<IInputProps> = ({
           className="radio-field"
           {...props}
         />
-        <label htmlFor={id} className="label">{label}</label>
+        <label htmlFor={id} className="label">
+          {label}
+          <ReactSVG
+            className="radio-checked"
+            src="src/assets/icons/checked.svg"
+          />
+        </label>
       </div>
     );
   }
@@ -68,13 +83,13 @@ export const Input: FC<IInputProps> = ({
       <SelectField
         id={id}
         label={label}
-        className={`custom-input ${
+        className={`custom-input${
           className
-            ? meta.error
-              ? `custom-input--${className} custom-input--${className}-error`
-              : `custom-input--${className}`
-            : meta.error
-            ? "custom-input--error"
+            ? meta.touched && meta.error
+              ? ` custom-input--${className} custom-input--${className}-error`
+              : ` custom-input--${className}`
+            : meta.touched && meta.error
+            ? " custom-input--error"
             : ""
         } `}
         name={name}
@@ -90,17 +105,21 @@ export const Input: FC<IInputProps> = ({
       <DatePickerField
         id={id}
         label={label}
-        className={`custom-input ${
+        className={`custom-input${
           className
-            ? meta.error
-              ? `custom-input--${className} custom-input--${className}-error`
-              : `custom-input--${className}`
-            : meta.error
-            ? "custom-input--error"
+            ? meta.touched && meta.error
+              ? ` custom-input--${className} custom-input--${className}-error`
+              : ` custom-input--${className}`
+            : meta.touched && meta.error
+            ? " custom-input--error"
             : ""
         } `}
         name={name}
         isRequired={isRequired}
+        selectedDate={id === "openDate" ? startDate : endDate}
+        startDate={startDate}
+        endDate={endDate}
+        setSelectedDate={id === "openDate" ? setStartDate! : setEndDate!}
         {...props}
       />
     );
@@ -111,13 +130,13 @@ export const Input: FC<IInputProps> = ({
       <Textarea
         id={id}
         label={label}
-        className={`custom-input ${
+        className={`custom-input${
           className
-            ? meta.error
-              ? `custom-input--${className} custom-input--${className}-error`
-              : `custom-input--${className}`
-            : meta.error
-            ? "custom-input--error"
+            ? meta.touched && meta.error
+              ? ` custom-input--${className} custom-input--${className}-error`
+              : ` custom-input--${className}`
+            : meta.touched && meta.error
+            ? " custom-input--error"
             : ""
         } `}
         name={name}
@@ -131,15 +150,14 @@ export const Input: FC<IInputProps> = ({
 
   return (
     <div
-      className={`custom-input ${
-        className ? `custom-input--${className}` : ""
-      } ${meta.error ? `custom-input--error` : ""}`}
+      className={`custom-input${
+        className ? ` custom-input--${className}` : ""
+      } ${meta.touched && meta.error ? ` custom-input--error` : ""}`}
     >
       <label htmlFor={id} className="label">
         {isRequired ? (
           <>
-            {label}{" "}
-            <span>*</span>
+            {label} <span>*</span>
           </>
         ) : (
           label

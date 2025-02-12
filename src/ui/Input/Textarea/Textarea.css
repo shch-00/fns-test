@@ -8,8 +8,8 @@
 /* Слой с кружками теперь синхронизируется со скроллом */
 .list-overlay {
   position: absolute;
-  top: 26px;
-  left: 8px;
+  top: 33px;
+  left: 10px;
   right: 8px;
   bottom: 8px;
   pointer-events: none;

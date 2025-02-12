@@ -2,9 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  position: relative;
 }
 
-.custom-input--error .field {
+.custom-input--error .field,
+.custom-input--date-error .field,
+.custom-input--radio-error .field,
+.custom-input--select-error .field,
+.custom-input--salary-error .field,
+.custom-input--wide-error .field,
+.custom-input--textarea-error .field {
   border-color: #bf0003;
 }
 
@@ -27,7 +34,7 @@
   width: 275px;
   box-shadow: 0px 0px 0px 0px transparent;
   min-height: 44px;
-  color: #4F4F55;
+  color: #4f4f55;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease;
 }
 
@@ -38,57 +45,100 @@
 }
 
 .field:hover {
-  box-shadow: 0px 0px 3px 1px #35a500b2;
+  box-shadow: 0px 0px 3px 1px hsla(101, 100%, 32%, 0.698);
 }
 
 .field::placeholder {
-  color: #dcdcdc 
+  color: #dcdcdc;
 }
 
 .error {
-  margin: 4px 0 0;
+  position: absolute;
+  top: 72px;
   color: #bf0003;
   font-size: 12px;
 }
 
-.custom-input--date {
-}
-
-.custom-input--date-error .field {
-  border-color: #bf0003;
-}
-
 .custom-input--radio {
+  flex-direction: row;
+  align-items: center;
 }
 
-.custom-input--radio-error .field {
-  border-color: #bf0003;
+.custom-input--radio .label {
+  font-weight: 300;
+  font-size: 16px;
+  margin: 0;
+  position: relative;
+  padding: 0 0 0 28px;
 }
 
-.custom-input--select {
+.custom-input--radio .label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #4C73E3;
+  box-shadow: 0px 0px 0px 0px transparent;
+  transition: box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-.custom-input--select-error .field {
-  border-color: #bf0003;
+.custom-input--radio .label:hover::before {
+  box-shadow: 0px 0px 3px 1px #35A50080;
+}
+
+.radio-field {
+  display: none;
+}
+
+.radio-field:checked ~ .label::before {
+  background-color: #4C73E3;
+}
+
+.radio-field:checked ~ .label .radio-checked {
+  opacity: 1;
+}
+
+.radio-checked {
+  opacity: 0;
+  pointer-events: none;position: absolute;
+  left: 4px;
+  top: 57%;
+  transform: translateY(-50%);
+  transition: opacity 0.2s ease;
+}
+
+.custom-input--salary .label {
+  font-weight: 300;
+}
+
+.custom-input--salary .field {
+  max-width: 100px;
 }
 
 .custom-input--salary {
-}
-
-.custom-input--salary-error .field {
-  border-color: #bf0003;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
 }
 
 .custom-input--wide {
+  min-width: 275px;
+  width: max-content;
+  max-width: 420px;
+  flex-grow: 1;
 }
 
-.custom-input--wide-error .field {
-  border-color: #bf0003;
+.custom-input--wide .field {
+  width: 100%;
 }
 
-.custom-input--textarea {
-}
-
-.custom-input--textarea-error .field {
-  border-color: #bf0003;
+.custom-input--textarea .field {
+  width: 100%;
+  color: transparent;
+  padding: 12px 20px 12px 29px;
 }

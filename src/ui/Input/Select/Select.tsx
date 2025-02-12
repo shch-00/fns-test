@@ -1,6 +1,7 @@
 import { useField, useFormikContext } from "formik";
-import { FC } from "react";
-import Select, { StylesConfig, GroupBase } from "react-select";
+import { FC, useState, useRef } from "react";
+import Select, { StylesConfig, GroupBase, SingleValue } from "react-select";
+import { ReactSVG } from "react-svg";
 import "./Select.css";
 
 interface ISelectFieldProps {
@@ -24,12 +25,16 @@ export const SelectField: FC<ISelectFieldProps> = ({
   const { setFieldValue, setTouched } = useFormikContext();
   const [field, meta] = useField(name);
 
+  const [selectIconClassName, setSelectIconClassName] =
+    useState("select-switch");
+
   type OptionType = { value: string; label: string };
 
   // Определяем стили с правильной типизацией
   const customStyles: StylesConfig<OptionType, false, GroupBase<OptionType>> = {
     control: (provided, state) => ({
       ...provided,
+      pointerEvents: state.isFocused ? "none" : "all",
       backgroundColor: "white",
       borderColor: meta.touched && meta.error ? "#BF0003" : "#dee4f0",
       borderWidth: 1,
@@ -42,10 +47,15 @@ export const SelectField: FC<ISelectFieldProps> = ({
       color: "#DCDCDC",
       fontWeight: "300",
       fontSize: "16px",
-      transition: "border-color 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease",
+      transition:
+        "border-color 0.2s ease, box-shadow 0.2s ease, outline 0.2s ease",
       "&:hover": {
         borderColor: meta.touched && meta.error ? "#BF0003" : "#dee4f0",
-        boxShadow: `${state.isFocused ? "0px 0px 0px 0px transparent" : '0px 0px 3px 1px #35A500B2'}`,
+        boxShadow: `${
+          state.isFocused
+            ? "0px 0px 0px 0px transparent"
+            : "0px 0px 3px 1px #35A500B2"
+        }`,
       },
     }),
     menu: (provided, state) => ({
@@ -56,7 +66,7 @@ export const SelectField: FC<ISelectFieldProps> = ({
       boxShadow: "0px 0px 0px 0px transparent",
       padding: "0",
       margin: "0",
-      top: "64px"
+      top: "64px",
     }),
     option: (provided, state) => ({
       ...provided,
@@ -78,6 +88,21 @@ export const SelectField: FC<ISelectFieldProps> = ({
     }),
   };
 
+  const selectRef = useRef(null);
+
+  const handleChange = (
+    option: SingleValue<{
+      value: string;
+      label: string;
+    }>
+  ) => {
+    setFieldValue(name, option ? option.value : "");
+
+    if (selectRef.current) {
+      selectRef.current.blur();
+    }
+  };
+
   return (
     <div className={className}>
       <label htmlFor={id} className="label">
@@ -92,13 +117,24 @@ export const SelectField: FC<ISelectFieldProps> = ({
       <Select
         {...field}
         id={id}
+        ref={selectRef}
         options={options}
-        onChange={(option) => setFieldValue(name, option ? option.value : "")}
-        onBlur={() => setTouched({ [name]: true })}
+        onChange={handleChange}
+        onFocus={() =>
+          setSelectIconClassName("select-switch select-switch--open")
+        }
+        onBlur={() => {
+          setTouched({ [name]: true });
+          setSelectIconClassName("select-switch");
+        }}
         styles={customStyles}
         placeholder="Выберите"
         classNamePrefix="select"
         value={options.find((option) => option.value === field.value)}
+      />
+      <ReactSVG
+        className={selectIconClassName}
+        src="src/assets/icons/switch.svg"
       />
       {meta.touched && meta.error && <div className="error">{meta.error}</div>}
     </div>
