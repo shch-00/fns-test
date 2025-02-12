@@ -140,6 +140,7 @@ export const Input: FC<IInputProps> = ({
             : ""
         } `}
         name={name}
+        textareaList={textareaList}
         onChange={setTextareaList}
         isRequired={isRequired}
         placeholder={placeholder}

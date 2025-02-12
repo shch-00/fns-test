@@ -1,6 +1,6 @@
 import DatePicker from "react-datepicker";
 import { useField, useFormikContext } from "formik";
-import { FC, useState } from "react";
+import { FC } from "react";
 import "react-datepicker/dist/react-datepicker.css";
 import "./DatePicker.css";
 import { ReactSVG } from "react-svg";

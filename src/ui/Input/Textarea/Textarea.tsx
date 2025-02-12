@@ -10,6 +10,7 @@ interface ITextareaProps {
   name: string;
   isRequired: boolean;
   placeholder: string;
+  textareaList?: string;
 }
 
 export const Textarea: FC<ITextareaProps> = ({
@@ -20,6 +21,7 @@ export const Textarea: FC<ITextareaProps> = ({
   name,
   isRequired,
   placeholder,
+  textareaList,
   ...props
 }) => {
   const [field, meta] = useField(name);

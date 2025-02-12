@@ -20,7 +20,6 @@ export const SelectField: FC<ISelectFieldProps> = ({
   label,
   options,
   isRequired,
-  ...props
 }) => {
   const { setFieldValue, setTouched } = useFormikContext();
   const [field, meta] = useField(name);
@@ -58,7 +57,7 @@ export const SelectField: FC<ISelectFieldProps> = ({
         }`,
       },
     }),
-    menu: (provided, state) => ({
+    menu: (provided) => ({
       ...provided,
       borderRadius: "16px",
       overflow: "hidden",
@@ -78,17 +77,17 @@ export const SelectField: FC<ISelectFieldProps> = ({
         backgroundColor: state.isSelected ? "#4C73E3" : "lightblue",
       },
     }),
-    indicatorSeparator: (provided, state) => ({
+    indicatorSeparator: (provided) => ({
       ...provided,
       display: "none",
     }),
-    dropdownIndicator: (provided, state) => ({
+    dropdownIndicator: (provided) => ({
       ...provided,
       display: "none",
     }),
   };
 
-  const selectRef = useRef(null);
+  const selectRef = useRef<any>(null);
 
   const handleChange = (
     option: SingleValue<{
