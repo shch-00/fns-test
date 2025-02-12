@@ -1,0 +1,1 @@
+export const getRelevantExperience = (str: string) => parseInt(str.replace(/\D/g, ""), 10);

@@ -1,0 +1,69 @@
+.list-textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  font-size: 16px;
+}
+
+/* Слой с кружками теперь синхронизируется со скроллом */
+.list-overlay {
+  position: absolute;
+  top: 33px;
+  left: 10px;
+  right: 5px;
+  bottom: 8px;
+  pointer-events: none;
+  white-space: pre-wrap;
+  font-size: 16px;
+  line-height: 24px;
+  font-family: inherit;
+  word-break: break-word;
+  overflow-y: auto; /* Добавляем прокрутку */
+  max-height: 100%;
+  padding: 0 0 8px;
+}
+
+.list-overlay::-webkit-scrollbar {
+  background: transparent;
+}
+
+.list-item {
+  position: relative;
+  padding-left: 20px;
+  line-height: 24px;
+}
+
+.list-item::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 1.2em;
+}
+
+/* Теперь textarea и overlay будут прокручиваться синхронно */
+textarea {
+  width: 100%;
+  height: 100%;
+  padding: 8px 8px 0 26px;
+  font-family: inherit;
+  font-size: 16px;
+  line-height: 24px;
+  border: 1px solid #ccc;
+  resize: none;
+  background: transparent;
+  color: transparent;
+  caret-color: black;
+  box-sizing: border-box;
+  overflow-y: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .list-overlay {
+    top: 30px;
+    left: 3px;
+    right: -11px;
+    bottom: 6px;
+    padding: 0;
+  }
+}

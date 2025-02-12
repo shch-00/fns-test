@@ -1,0 +1,38 @@
+@font-face {
+  font-family: PFDinTextCondPro;
+  src: url("./assets/fonts/PFDinTextCondPro/PFDinTextCondPro-Regular.woff2")
+      format("woff2"),
+    url("./assets/fonts/PFDinTextCondPro/PFDinTextCondPro-Regular.woff")
+      format("woff"),
+    url("./assets/fontsPFDinTextCondPro/PFDinTextCondPro-Regular.ttf")
+      format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: PFDinTextCondProBold;
+  src: url("./assets/fonts/PFDinTextCondPro/PFDinTextCondPro-Bold.woff2")
+      format("woff2"),
+    url("./assets/fonts/PFDinTextCondPro/PFDinTextCondPro-Bold.woff")
+      format("woff"),
+    url("./assets/fontsPFDinTextCondPro/PFDinTextCondPro-Bold.ttf")
+      format("truetype");
+  font-style: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Inter;
+  src: url("./assets/fonts/Inter/Inter-Font.woff2") format("woff2"),
+    url("./assets/fonts/Inter/Inter-Font.woff") format("woff"),
+    url("./assets/fonts/Inter/Inter-Font.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: OpenSans;
+  src: url("./assets/fonts/OpenSans/OpenSans-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-display: swap;
+}

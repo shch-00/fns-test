@@ -1,0 +1,12 @@
+.select-switch {
+  position: absolute;
+  top: 38px;
+  right: 16px;
+  fill: #4c73e3;
+  pointer-events: none;
+  transition: transform 0.2s ease;
+}
+
+.select-switch--open {
+  transform: rotateX(180deg) translateY(7px);
+}
