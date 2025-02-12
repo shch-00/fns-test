@@ -41,7 +41,7 @@ function App() {
       <main className="content">
         <Routes>
           <Route
-            path="/fns-test"
+            path="/"
             element={<Navigate to="/applications" replace />}
           />
           <Route path="/applications" element={<ApplicationsPage />} />
