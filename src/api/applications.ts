@@ -1,6 +1,6 @@
 import Application from "../interfaces";
 
-export const API_URL = "http://localhost:5000";
+export const API_URL = "http://localhost:4000";
 
 export async function getApplications(): Promise<Application[]> {
   const response = await fetch(`${API_URL}/applications`);
