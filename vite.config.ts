@@ -9,5 +9,5 @@ export default defineConfig({
       targets: [{ src: "public/*", dest: "" }],
     }),
   ],
-  base: "/fns-test/", // базовый URL для GitHub Pages (если нужно)
+  base: "/fns-test", // базовый URL для GitHub Pages (если нужно)
 });
