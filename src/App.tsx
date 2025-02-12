@@ -16,21 +16,22 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      {/* <BrowserRouter> */}
       <header className="header">
         <Container>
           <div className="header__inner">
-            <Link to={"/fns-test/applications/#"}>
+            <Link to={"/applications/#"}>
               <h1 className="header__title">O</h1>
             </Link>
             <nav className="nav-menu">
               <NavLink
-                to={"/fns-test/applications"}
+                to={"/applications"}
                 className="header__link"
                 end
               >
                 Все заявки
               </NavLink>
-              <NavLink to={"/fns-test/creation"} className="header__link" end>
+              <NavLink to={"/creation"} className="header__link" end>
                 Создание заявки
               </NavLink>
             </nav>
@@ -41,16 +42,17 @@ function App() {
         <Routes>
           <Route
             path="/fns-test"
-            element={<Navigate to="/fns-test/applications" replace />}
+            element={<Navigate to="/applications" replace />}
           />
-          <Route path="/fns-test/applications" element={<ApplicationsPage />} />
+          <Route path="/applications" element={<ApplicationsPage />} />
           <Route
-            path="/fns-test/applications/:applicationId"
+            path="/applications/:applicationId"
             element={<ApplicationEditPage />}
           />
-          <Route path="/fns-test/creation" element={<CreationPage />} />
+          <Route path="/creation" element={<CreationPage />} />
         </Routes>
       </main>
+      {/* </BrowserRouter> */}
     </QueryClientProvider>
   );
 }

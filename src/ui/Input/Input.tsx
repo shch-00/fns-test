@@ -71,7 +71,7 @@ export const Input: FC<IInputProps> = ({
           {label}
           <ReactSVG
             className="radio-checked"
-            src="assets/icons/checked.svg"
+            src="icons/checked.svg"
           />
         </label>
       </div>
