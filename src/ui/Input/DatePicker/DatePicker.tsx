@@ -69,7 +69,7 @@ export const DatePickerField: FC<IDatePickerFieldProps> = ({
         placeholderText="дд.мм.гггг"
         enableTabLoop={true}
         disabledKeyboardNavigation={false}
-        icon={<ReactSVG src="fns-test/icons/calendar.svg" />}
+        icon={<ReactSVG src="icons/calendar.svg" />}
         locale={ru}
         {...props}
       />

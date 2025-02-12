@@ -91,7 +91,7 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
   const subway =
     vacancy.subway !== "" ? (
       <div className="card__subway">
-        <ReactSVG className="card__metro-icon" src="fns-test/icons/metro.svg" />
+        <ReactSVG className="card__metro-icon" src="icons/metro.svg" />
         <span className="subway">
           {stations.length > 1
             ? `${stations[0]} и еще ${stations.length - 1}`
@@ -108,14 +108,14 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
         <span className="card__date">Дата публикации: {formattedDate}</span>
         <h3 className="card__title">{vacancy.title}</h3>
         <div className="card__location">
-          <ReactSVG className="card__map-icon" src="fns-test/icons/map.svg" />{" "}
+          <ReactSVG className="card__map-icon" src="icons/map.svg" />{" "}
           {location}
         </div>
       </div>
       <div className="card__right">
         <div  className="card__link">
         <Link to={`/applications/${vacancy.id}`}>
-          <ReactSVG className="card__edit-icon" src="fns-test/icons/edit.svg" />
+          <ReactSVG className="card__edit-icon" src="icons/edit.svg" />
         </Link>
         </div>
         <div className="card__right-inner">
