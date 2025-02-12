@@ -13,6 +13,7 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
   const formattedDate = new Date(vacancy.currentDate).toLocaleDateString(
     "ru-RU"
   );
+
   const location = `${vacancy.region}, ${vacancy.adress}`;
 
   let salaryType;
@@ -83,14 +84,19 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
     );
   }
 
+  const stations = vacancy.subway.split(/\s*,\s*|\s+и\s+/);
+
+  stations.map((station) => console.log(station));
+
   const subway =
     vacancy.subway !== "" ? (
       <div className="card__subway">
-        <ReactSVG
-          className="card__metro-icon"
-          src="icons/metro.svg"
-        />
-        <span className="subway">{vacancy.subway}</span>
+        <ReactSVG className="card__metro-icon" src="fns-test/icons/metro.svg" />
+        <span className="subway">
+          {stations.length > 1
+            ? `${stations[0]} и еще ${stations.length - 1}`
+            : vacancy.subway}
+        </span>
       </div>
     ) : (
       <></>
@@ -102,18 +108,20 @@ export const VacancyItem: FC<TVacancyItemProps> = ({ vacancy }) => {
         <span className="card__date">Дата публикации: {formattedDate}</span>
         <h3 className="card__title">{vacancy.title}</h3>
         <div className="card__location">
-          <ReactSVG className="card__map-icon" src="icons/map.svg" />{" "}
+          <ReactSVG className="card__map-icon" src="fns-test/icons/map.svg" />{" "}
           {location}
         </div>
       </div>
       <div className="card__right">
-        <Link to={`/applications/${vacancy.id}`} className="card__link">
-          <ReactSVG
-            className="card__edit-icon"
-            src="icons/edit.svg"
-          />
+        <div  className="card__link">
+        <Link to={`/applications/${vacancy.id}`}>
+          <ReactSVG className="card__edit-icon" src="fns-test/icons/edit.svg" />
         </Link>
+        </div>
         <div className="card__right-inner">
+          <div className="card__location card__location--hide">
+            {location}
+          </div>
           {salary}
           {experienceString}
           {subway}

@@ -142,3 +142,34 @@
   color: transparent;
   padding: 12px 20px 12px 29px;
 }
+
+.custom-input--date input {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .custom-input:not(.custom-input--textarea) .field {
+    max-width: 275px;
+    width: 100%;
+  }
+
+  .custom-input--wide {
+    min-width: unset;
+  }
+
+  .custom-input--textarea .field {
+    padding: 4px 4px 0 22px;
+  }
+
+  .custom-input--textarea .list-textarea {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  .custom-input--select .select__control {
+    min-width: 200px;
+    width: 100%;
+  }
+}

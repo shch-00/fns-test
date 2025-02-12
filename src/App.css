@@ -23,6 +23,26 @@ body {
   height: 100%;
 }
 
+.header__main-link {
+  margin: 0 0 0 25px;
+  width: 5px;
+  height: 5px;
+  display: flex;
+  position: relative;
+}
+
+.header__main-link::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
 .header__link {
   position: relative;
   font-weight: 400;
@@ -87,4 +107,24 @@ h1,
 h2,
 h3 {
   margin: 0;
+}
+
+@media screen and (max-width: 767px) {
+  .header {
+    margin: 0 0 24px;
+  }
+
+  .header__inner {
+    justify-content: space-around;
+  }
+
+  .header__link {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 20px 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
 }

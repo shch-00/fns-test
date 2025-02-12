@@ -79,8 +79,21 @@
     width: 100%;
 }
 
-.vacancy-form__submit {
-}
+@media screen and (max-width: 767px) {
+  .vacancy-form {
+    margin: 16px 0 0;
+  }
 
-.vacancy-form__discard {
+  .vacancy-form__wrapper {
+    padding: 32px;
+  }
+
+  .vacancy-form__inner {
+    gap: 20px;
+  }
+
+  .vacancy-form__bottom {
+    flex-direction: column;
+    width: max-content;
+  }
 }

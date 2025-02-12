@@ -10,7 +10,7 @@
   position: absolute;
   top: 33px;
   left: 10px;
-  right: 8px;
+  right: 5px;
   bottom: 8px;
   pointer-events: none;
   white-space: pre-wrap;
@@ -20,6 +20,7 @@
   word-break: break-word;
   overflow-y: auto; /* Добавляем прокрутку */
   max-height: 100%;
+  padding: 0 0 8px;
 }
 
 .list-overlay::-webkit-scrollbar {
@@ -55,4 +56,14 @@ textarea {
   caret-color: black;
   box-sizing: border-box;
   overflow-y: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .list-overlay {
+    top: 30px;
+    left: 3px;
+    right: -11px;
+    bottom: 6px;
+    padding: 0;
+  }
 }

@@ -20,8 +20,7 @@ function App() {
       <header className="header">
         <Container>
           <div className="header__inner">
-            <Link to={"/applications/#"}>
-              <h1 className="header__title">O</h1>
+            <Link to={"/applications/#"} className="header__main-link">
             </Link>
             <nav className="nav-menu">
               <NavLink
